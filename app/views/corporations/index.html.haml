@@ -14,7 +14,7 @@
     - @corporations.each do |corporation|
       %tr
         %td= corporation.id
-        %td= corporation.name
+        %td= link_to corporation.name, "corporation/#{corporation.id}"
         %td= corporation.ticker
         %td= corporation.description
         %td= corporation.url
