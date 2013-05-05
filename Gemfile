@@ -42,9 +42,12 @@ group :development, :test do
 end
 
 group :test do
-  gem "cucumber-rails"
-  gem "cucumber-rails-training-wheels"
-  gem "database_cleaner"
+  # @TODO: Cucumber is not compatible with rails yet.
+  # -> Check out follow issue https://github.com/cucumber/cucumber-rails/issues/231
+
+  # gem "cucumber-rails", "~> 1.3.1"
+  # gem "cucumber-rails-training-wheels"
+  # gem "database_cleaner"
 end
 
 # Use ActiveModel has_secure_password
