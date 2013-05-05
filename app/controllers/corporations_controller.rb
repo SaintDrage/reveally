@@ -4,5 +4,6 @@ class CorporationsController < ApplicationController
   end
 
   def show
+    @corporation = Corporation.find params[:id]
   end
 end

@@ -1,0 +1,20 @@
+%h1=p @corporation.name
+
+%table
+  %thead
+    %tr
+      %th Id
+      %th Ticker
+      %th Tescription
+      %th Url
+      %th Join_at
+      %th Created_at
+  %tbody
+    %tr
+      %td= @corporation.id
+      %td= @corporation.ticker
+      %td= @corporation.description
+      %td= @corporation.url
+      %td= @corporation.join_at
+      %td= @corporation.created_at
+
