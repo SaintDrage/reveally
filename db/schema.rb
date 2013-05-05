@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20130505072947) do
     t.string   "ticker"
     t.text     "description"
     t.string   "url"
+    t.datetime "join_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

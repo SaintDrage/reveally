@@ -5,6 +5,7 @@ class CreateCorporations < ActiveRecord::Migration
       t.string :ticker
       t.text :description
       t.string :url
+      t.datetime :join_at
 
       t.timestamps
     end
