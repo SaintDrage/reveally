@@ -30,6 +30,7 @@ pickle-email-*.html
 /tmp
 
 # Ignore other bullshit.
+/bin
 *.rbc
 *.sassc
 .sass-cache
