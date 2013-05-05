@@ -39,8 +39,12 @@ group :production, :staging do
 end
 
 group :development, :test do
-  gem 'json'
-  gem 'httparty'
+end
+
+group :test do
+  gem "cucumber-rails"
+  gem "cucumber-rails-training-wheels"
+  gem "database_cleaner"
 end
 
 # Use ActiveModel has_secure_password
