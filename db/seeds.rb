@@ -7,6 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
+# @TODO: load corporations from EVE API.
 corporations = [
   {
     id: 10,
