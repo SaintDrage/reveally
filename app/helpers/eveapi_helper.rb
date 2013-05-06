@@ -1,7 +1,3 @@
-require 'config/loggers'
-
-eveapi_log.info = 'test'
-
 module EveApiHelper
 
   def connection(key_id='', v_code='', scope='eve')
@@ -10,6 +6,8 @@ module EveApiHelper
 
       @api = EAAL::API.new(key_id, v_code, scope)
     rescue Exception => ex
+      require 'config/loggers'
+
       eveapi_log.info = ex.message
       @api = false
     end
