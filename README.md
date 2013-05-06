@@ -28,6 +28,6 @@ Installing Reveally is trivial, provided you follow the following steps:
     $ rake db:seed
     $ rails s
     
-You can now access Typo to http://yourdomain:3000
+You can now access Reveally to http://yourdomain:3000
 
 That’s all!
