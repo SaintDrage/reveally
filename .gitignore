@@ -36,4 +36,3 @@ pickle-email-*.html
 .sass-cache
 capybara-*.html
 .rspec
-*.lock
