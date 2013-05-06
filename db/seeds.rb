@@ -6,40 +6,24 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-
-# @TODO: load corporations from EVE API.
-corporations = [
-  {
-    id: 10,
-    name: 'The Tuskers',
-    ticker: 'TT',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    url: 'http://example1.com',
-    created_at: '2010-05-05 09:03:14',
-    join_at: '2012-04-12 02:00:00',
-  },
-  {
-    id: 20,
-    name: 'Civic Court',
-    ticker: 'CC',
-    description: 'Integer metus dolor, dictum non dapibus sit amet, blandit eget ante.',
-    url: 'http://example2.com',
-    created_at: '2011-01-08 00:00:00',
-    join_at: '2011-04-12 02:00:00',
-  },
-  {
-    id: 30,
-    name: 'Inherent Implants',
-    ticker: 'II',
-    description: 'Fusce augue leo, condimentum vitae consectetur eget, rutrum in turpis.',
-    url: 'http://example3.com',
-    created_at: '2008-01-05 09:03:14',
-    join_at: '2012-04-12 02:00:00',
-  }
-]
+ALLY_ID = '99002003'
 
 puts "✩✩✩✩ Create corporations ✩✩✩✩"
-corporations.each do |corporation|
-   corporation = Corporation.create corporation
-   puts " -> Corporation '#{corporation.name}' has been created!"
+include EveApiHelper
+list = alliance_list
+list.alliances.each do |alliance|
+  if alliance.allianceID == ALLY_ID
+     alliance.memberCorporations.each do |corporation|
+       info = corporation_info(corporation.corporationID)
+       Corporation.create({
+           id: corporation.corporationID,
+           name: info.corporationName,
+           ticker: info.ticker,
+           description: info.description,
+           url: info.url,
+           join_at: corporation.startDate,
+        })
+       puts " -> Corporation '#{info.corporationName}' has been created!"
+     end
+  end
 end
