@@ -4,9 +4,11 @@ Reveally
 Alliance website for Eve Online
 
 ## Requirements
-* ruby "2.0.0"
+* Ruby 2.0.0
+* Ruby On Rails 4.0.0
+* A database engine, MySQL, PgSQL or SQLite3
 
-## Installation of the environment
+## Dev Environment
 You can use vagrant which configs are inside this project.
 
 * Install [Vagrant](http://vagrantup.com)
@@ -18,8 +20,14 @@ You can use vagrant which configs are inside this project.
 
 When you are done, exit the VM and run the following command to suspend it until later: `vagrant suspend`
 
-## Installation of the project
-* `bundle install`
-* `rake db:migrate`
-* `rake db:seed`
-* `rails s`
+## Install Reveally
+Installing Reveally is trivial, provided you follow the following steps:
+
+    $ bundle install
+    $ rake db:migrate
+    $ rake db:seed
+    $ rails s
+    
+You can now access Typo to http://yourdomain:3000
+
+That’s all!
