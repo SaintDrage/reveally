@@ -2,7 +2,7 @@ require 'config/loggers'
 
 eveapi_log.info = 'test'
 
-module EveApi
+module EveApiHelper
 
   def connection(key_id='', v_code='', scope='eve')
     begin
