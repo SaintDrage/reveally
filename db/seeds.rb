@@ -26,18 +26,18 @@ list.alliances.each do |alliance|
        puts " -> Corporation '#{info.corporationName}' has been created!"
      end
   end
-
-  puts "✩✩✩✩ Create Corporation Keys ✩✩✩✩"
-
-  key = {
-    id: 1234567,
-    v_code: 'goin34342oi4n3f23o4nrou3242dj4nr2i34br4bt3i2rpb34jrn324kjfn2432g'
-  }
-  key = CorporationKey.create(key)
-
-  # Add key to first corporation.
-  corporation = Corporation.first
-
-  corporation.corporation_keys = [key]
-  corporation.save!
 end
+
+puts "✩✩✩✩ Create Corporation Keys ✩✩✩✩"
+
+key = {
+  id: 1234567,
+  v_code: 'goin34342oi4n3f23o4nrou3242dj4nr2i34br4bt3i2rpb34jrn324kjfn2432g'
+}
+key = CorporationKey.create(key)
+
+# Add key to first corporation.
+corporation = Corporation.first
+
+corporation.corporation_keys = [key]
+corporation.save
