@@ -10,13 +10,15 @@
       %th Url
       %th Join_at
       %th Created_at
+      %th Status
   %tbody
     - @corporations.each do |corporation|
       %tr
         %td= corporation.id
         %td= link_to corporation.name, "/corporation/#{corporation.id}"
         %td= corporation.ticker
-        %td= corporation.description
+        %td= corporation.description[0..100]
         %td= corporation.url
         %td= corporation.join_at
         %td= corporation.created_at
+        %td= corporation.status
