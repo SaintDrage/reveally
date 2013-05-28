@@ -10,11 +10,11 @@ ALLY_ID = '99002003'
 
 puts "✩✩✩✩ Create Corporations ✩✩✩✩"
 include EveApiHelper
-list = alliance_list
-list.alliances.each do |alliance|
+api = EveApi.new
+api.alliance_list.alliances.each do |alliance|
   if alliance.allianceID == ALLY_ID
      alliance.memberCorporations.each do |corporation|
-       info = corporation_info(corporation.corporationID)
+       info = api.corporation_info(corporation.corporationID)
        Corporation.create({
            id: corporation.corporationID,
            name: info.corporationName,
