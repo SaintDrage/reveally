@@ -3,8 +3,12 @@ class CorporationKeysController < ApplicationController
     @corporation_keys = CorporationKey.all
   end
 
+  def new
+    @corporation_key = CorporationKey.new
+  end
+
   def create
-    @corporation_key = CorporationKey.create prepare(params)
+    @corporation_key = CorporationKey.create params.permit![:corporation_key]
 
     flash[:notice] = "Key #{@corporation_key.id} was successfully created."
     redirect_to corporation_keys_path
@@ -16,7 +20,7 @@ class CorporationKeysController < ApplicationController
 
   def update
     @corporation_key = CorporationKey.find params[:id]
-    @corporation_key.update_attributes! prepare(params)
+    @corporation_key.update_attributes! params.permit![:corporation_key]
 
     flash[:notice] = "Key #{@corporation_key.id} was successfully updated."
     redirect_to corporation_keys_path
@@ -28,13 +32,5 @@ class CorporationKeysController < ApplicationController
 
     flash[:notice] = "Key '#{@corporation_key.id}' deleted."
     redirect_to corporation_keys_path
-  end
-
-  #HACK: it should be just CorporationKey.create(params)
-  def prepare(params)
-    {
-      corporation_id: params[:corporation_key][:corporation_id],
-      v_code: params[:corporation_key][:v_code]
-    }
   end
 end
