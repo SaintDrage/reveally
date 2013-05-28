@@ -1,0 +1,10 @@
+= form_for(@corporation_key) do |f|
+  = f.label :corporation_id
+  = f.number_field :corporation_id
+
+  %br
+  = f.label :v_code
+  = f.text_field :v_code
+
+  %br
+  = f.submit 'Save Changes'
