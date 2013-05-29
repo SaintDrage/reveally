@@ -20,10 +20,14 @@ class CorporationKeysController < ApplicationController
 
   def update
     @corporation_key = CorporationKey.find params[:id]
-    @corporation_key.update_columns params[:corporation_key]
+    key_params = params.require(:corporation_key).permit(:v_code, :corporation_id)
 
-    flash[:notice] = "Key #{@corporation_key.id} was successfully updated."
-    redirect_to corporation_keys_path
+    if @corporation_key.update(key_params)
+      flash[:notice] = "Key #{@corporation_key.id} was successfully updated."
+      redirect_to corporation_keys_path
+    else
+      render action: 'edit'
+    end
   end
 
   def destroy
