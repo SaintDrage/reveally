@@ -1,6 +1,6 @@
 = form_for(@corporation_key) do |f|
   = f.label :corporation_id
-  = f.number_field :corporation_id
+  = f.collection_select :corporation_id, Corporation.all, :id, :name
 
   %br
   = f.label :v_code
