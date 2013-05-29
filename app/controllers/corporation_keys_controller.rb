@@ -20,7 +20,7 @@ class CorporationKeysController < ApplicationController
 
   def update
     @corporation_key = CorporationKey.find params[:id]
-    @corporation_key.update_attributes! params.permit![:corporation_key]
+    @corporation_key.update_columns params[:corporation_key]
 
     flash[:notice] = "Key #{@corporation_key.id} was successfully updated."
     redirect_to corporation_keys_path
