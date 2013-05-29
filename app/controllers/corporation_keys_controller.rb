@@ -8,10 +8,10 @@ class CorporationKeysController < ApplicationController
   end
 
   def create
-    @corporation_key = CorporationKey.create params.permit![:corporation_key]
+    @corporation_key = CorporationKey.new(key_params)
+    @corporation_key.save
 
-    flash[:notice] = "Key #{@corporation_key.id} was successfully created."
-    redirect_to corporation_keys_path
+    redirect_to corporation_keys_path, notice: 'Created!'
   end
 
   def edit
@@ -20,7 +20,6 @@ class CorporationKeysController < ApplicationController
 
   def update
     @corporation_key = CorporationKey.find params[:id]
-    key_params = params.require(:corporation_key).permit(:v_code, :corporation_id)
 
     if @corporation_key.update(key_params)
       flash[:notice] = "Key #{@corporation_key.id} was successfully updated."
@@ -34,7 +33,11 @@ class CorporationKeysController < ApplicationController
     @corporation_key = CorporationKey.find(params[:id])
     @corporation_key.destroy
 
-    flash[:notice] = "Key '#{@corporation_key.id}' deleted."
-    redirect_to corporation_keys_path
+    redirect_to corporation_keys_path, notice: 'Updated!'
   end
+
+  private
+    def key_params
+      params.require(:corporation_key).permit(:v_code, :corporation_id)
+    end
 end
