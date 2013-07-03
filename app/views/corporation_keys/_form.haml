@@ -1,9 +1,8 @@
 = form_for(@corporation_key) do |f|
-  = f.label :corporation_id
-  = f.collection_select :corporation_id, Corporation.all, :id, :name
-
+  = f.label 'KeyID'
+  = f.text_field :id
   %br
-  = f.label :v_code
+  = f.label 'vCode'
   = f.text_field :v_code
 
   %br

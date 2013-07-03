@@ -38,6 +38,6 @@ class CorporationKeysController < ApplicationController
 
   private
     def key_params
-      params.require(:corporation_key).permit(:v_code, :corporation_id)
+      params.require(:corporation_key).permit(:id, :v_code, :corporation_id)
     end
 end

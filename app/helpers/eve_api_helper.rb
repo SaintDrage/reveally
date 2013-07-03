@@ -23,6 +23,10 @@ module EveApiHelper
     end
 
     # Authorized requests
+    def key_info
+      connection(scope: 'account').APIKeyInfo
+    end
+
     def corporation_member_tracking(extended=false)
       if extended
         connection(scope: 'corp').MemberTracking(:extended => 'True')
