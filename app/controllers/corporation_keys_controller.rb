@@ -9,9 +9,11 @@ class CorporationKeysController < ApplicationController
 
   def create
     @corporation_key = CorporationKey.new(key_params)
-    @corporation_key.save
-
-    redirect_to corporation_keys_path, notice: 'Created!'
+    if @corporation_key.save
+      redirect_to corporation_keys_path, notice: 'Created!'
+    else
+      render 'new'
+    end
   end
 
   def edit
@@ -38,6 +40,6 @@ class CorporationKeysController < ApplicationController
 
   private
     def key_params
-      params.require(:corporation_key).permit(:id, :v_code, :corporation_id)
+      params.require(:corporation_key).permit(:id, :v_code)
     end
 end

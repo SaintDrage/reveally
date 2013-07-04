@@ -12,4 +12,4 @@
         %td= link_to key.id, edit_corporation_key_path(key)
         %td= key.v_code
         %td= link_to key.corporation.name, "/corporation/#{key.corporation.id}"
-        %td= button_to 'Delete', corporation_key_path(key), :method => :delete, :confirm => 'Are you sure?'
+        %td= button_to 'Delete', corporation_key_path(key), :method => :delete, data: {confirm: 'Are you sure?'}

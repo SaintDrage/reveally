@@ -1,4 +1,10 @@
-= form_for(@corporation_key) do |f|
+= form_for :corporation_key, url: corporation_keys_path do |f|
+  = if @corporation_key.errors.any?
+    %div
+      %ul
+        = @corporation_key.errors.full_messages.each do |msg|
+          %li
+            = msg
   = f.label 'KeyID'
   = f.text_field :id
   %br
@@ -7,3 +13,4 @@
 
   %br
   = f.submit 'Save Changes'
+  = link_to 'Back', corporation_keys_path
