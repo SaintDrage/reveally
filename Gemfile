@@ -42,6 +42,8 @@ end
 
 group :development, :test do
   gem 'sqlite3'
+  gem 'pry'
+  gem 'meta_request'
 end
 
 group :test do
@@ -50,7 +52,7 @@ group :test do
 
   # gem "cucumber-rails", "~> 1.3.1"
   # gem "cucumber-rails-training-wheels"
-  # gem "database_cleaner"
+  # gem 'database_cleaner'
 end
 
 # Use ActiveModel has_secure_password

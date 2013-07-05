@@ -64,13 +64,24 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     memcache-client (1.8.5)
+    meta_request (0.2.7)
+      callsite
+      rack-contrib
+      railties
+    method_source (0.8.1)
     mime-types (1.23)
     minitest (4.7.4)
     multi_json (1.7.3)
     multipart-post (1.2.0)
     pg (0.15.1)
     polyglot (0.3.3)
+    pry (0.9.12.2)
+      coderay (~> 1.0.5)
+      method_source (~> 0.8)
+      slop (~> 3.4)
     rack (1.5.2)
+    rack-contrib (1.1.0)
+      rack (>= 0.9.1)
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.0.0.rc1)
@@ -145,7 +156,9 @@ DEPENDENCIES
   haml
   jbuilder (~> 1.0.1)
   jquery-rails
+  meta_request
   pg
+  pry
   rails (= 4.0.0.rc1)
   sass-rails (~> 4.0.0.rc1)
   sdoc

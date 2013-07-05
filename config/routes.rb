@@ -2,6 +2,8 @@ Reveally::Application.routes.draw do
   get "corporations" => 'corporations#index'
   get "corporation/:id" => 'corporations#show'
 
+  resources :corporation_keys
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
