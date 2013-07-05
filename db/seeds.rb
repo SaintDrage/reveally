@@ -6,13 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-ALLY_ID = '99002003'
-
 puts "✩✩✩✩ Create Corporations ✩✩✩✩"
 include EveApiHelper
 api = EveApi.new
 api.alliance_list.alliances.each do |alliance|
-  if alliance.allianceID == ALLY_ID
+  if alliance.allianceID == Figaro.env.ally_id
      alliance.memberCorporations.each do |corporation|
        info = api.corporation_info(corporation.corporationID)
        Corporation.create({

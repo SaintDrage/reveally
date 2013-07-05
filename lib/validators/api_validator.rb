@@ -12,9 +12,9 @@ class ApiValidator < ActiveModel::Validator
         record.errors :base,'API key is temporary! Please create a not expire key.' unless info.key.expires.empty?
         case info.key.type
           when 'Corporation'
-            mask = DIR_MASK
+            mask = Figaro.env.dir_mask
           else
-            mask = CHAR_MASK
+            mask = Figaro.env.char_mask
             record.errors.add :base, 'Wrong type of API Key! Need a corporate key' if record.is_a? CorporationKey
         end
         record.errors.add :base, "Improper access mask! Please set the #{mask}" unless info.key.accessMask == mask

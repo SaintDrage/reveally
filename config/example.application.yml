@@ -1,0 +1,6 @@
+# Your alliance id
+ALLY_ID: "99002003" # Example No Value Id
+
+# Director and character api keys access mask
+DIR_MASK: "67108863"
+CHAR_MASK: "268435455"

@@ -37,3 +37,6 @@ capybara-*.html
 .rspec
 .idea/
 .idea/*
+
+# Ignore application configuration
+/config/application.yml
