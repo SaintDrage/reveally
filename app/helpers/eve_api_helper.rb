@@ -11,42 +11,42 @@ module EveApiHelper
       @key_id, @v_code = key_id, v_code
     end
 
-    def connection(scope: 'eve')
+    def connection(scope)
+      EAAL.cache = EAAL::Cache::FileCache.new
       EAAL::API.new(@key_id, @v_code, scope)
+    end
+
+    def api_call(method, scope: 'eve', **kwargs)
+      begin
+        connection(scope).public_send(method, kwargs)
+      rescue EAAL::Exception::HTTPError
+        raise ApiOkError
+      end
     end
 
     # Unauthorized requests
     def alliance_list
-      connection.AllianceList
+      api_call(:AllianceList)
     end
 
     def corporation_info(corporation_id)
-      connection(scope: 'corp').CorporationSheet(:corporationID => corporation_id)
+      api_call(:CorporationSheet, scope: 'corp', :corporationID => corporation_id)
     end
 
     def character_info(character_id)
-      connection.CharacterInfo(:characterID => character_id)
+      api_call(:CharacterInfo, :characterID => character_id)
     end
 
     # Authorized requests
     def key_info
-      #connection(scope: 'account').APIKeyInfo
-      catch_exceptions "connection(scope: 'account').APIKeyInfo"
+      api_call(:APIKeyInfo, scope: 'account')
     end
 
     def corporation_member_tracking(extended=false)
       if extended
-        connection(scope: 'corp').MemberTracking(:extended => 'True')
+        api_call(:MemberTracking, scope: 'corp', :extended => 'True')
       else
-        connection(scope: 'corp').MemberTracking
-      end
-    end
-
-    def catch_exceptions(code)
-      begin
-        eval(code)
-      rescue EAAL::Exception::HTTPError => e
-        raise ApiBadError.new e.message
+        api_call(:MemberTracking, scope: 'corp')
       end
     end
   end
