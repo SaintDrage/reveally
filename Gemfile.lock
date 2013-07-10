@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/elDante/eaal.git
+  revision: 20af5e706d8c251b052a144c19de6045b5175ab8
+  specs:
+    eaal (0.1.12)
+      faraday (>= 0.8.4)
+      hpricot (>= 0.6)
+      memcache-client (>= 1.7.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -40,10 +49,6 @@ GEM
       execjs
     coffee-script-source (1.6.3)
     connection_pool (1.1.0)
-    eaal (0.1.12)
-      faraday (>= 0.8.4)
-      hpricot (>= 0.6)
-      memcache-client (>= 1.7.1)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -156,7 +161,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
-  eaal
+  eaal!
   figaro
   haml
   jbuilder (~> 1.0.1)

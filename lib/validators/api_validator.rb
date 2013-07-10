@@ -22,7 +22,9 @@ class ApiValidator < ActiveModel::Validator
         info.key.characters.each { |character| corporation_ids.push(character.corporationID) }
         record.errors.add :base, 'You are not a member of our alliance!' if Corporation.where(id: corporation_ids).empty?
       rescue EveApiHelper::ApiBadError
-        record.errors.add :base, 'Hmm.. Something wrong!'
+        record.errors.add :base, 'Your key is not valid! Please enter another key'
+      rescue EveApiHelper::ApiOkError
+        record.errors.add :base, 'Problems connecting to EveApi server. Please try later'
       end
     end
   end

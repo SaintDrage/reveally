@@ -19,8 +19,13 @@ module EveApiHelper
     def api_call(method, scope: 'eve', **kwargs)
       begin
         connection(scope).public_send(method, kwargs)
-      rescue EAAL::Exception::HTTPError
-        raise ApiOkError
+      rescue EAAL::Exception::HTTPError => e
+        case e.status
+          when 403
+            raise ApiBadError
+          else
+            raise ApiOkError
+        end
       end
     end
 

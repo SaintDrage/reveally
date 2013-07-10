@@ -27,7 +27,7 @@ gem 'jbuilder', '~> 1.0.1'
 
 gem 'haml'
 
-gem 'eaal'
+gem 'eaal', :git => 'https://github.com/elDante/eaal.git'
 
 gem 'sidekiq'
 
