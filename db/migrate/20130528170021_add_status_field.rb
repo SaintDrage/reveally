@@ -1,6 +1,6 @@
 class AddStatusField < ActiveRecord::Migration
   def up
-    add_column :corporations, :status, :boolean, default: 1, null: false
+    add_column :corporations, :status, :boolean, default: true, null: false
   end
 
   def down

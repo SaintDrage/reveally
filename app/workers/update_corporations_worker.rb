@@ -10,7 +10,7 @@ class UpdateCorporationsWorker
       api.alliance_list.alliances.each do |alliance|
         if alliance.allianceID == Figaro.env.ally_id
           alliance.memberCorporations.each do |corporation|
-            current_corporations.append(corporation.corporationID)
+            current_corporations.append(corporation.corporationID.to_i)
             info = api.corporation_info(corporation.corporationID)
             if corporations_on_site.ids.include? corporation.corporationID.to_i
               corporations_on_site.find(corporation.corporationID).update(
@@ -34,9 +34,10 @@ class UpdateCorporationsWorker
           end
         end
       end
-      #invalid_corporations = Corporation.all.ids - current_corporations
+      invalid_corporations = Corporation.all.ids - current_corporations
+      Corporation.where(id: invalid_corporations).update_all(status: false)
     rescue EveApiHelper::ApiBadError
-      NIL
+      nil
     end
   end
 end
