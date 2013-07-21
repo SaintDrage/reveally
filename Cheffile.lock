@@ -14,6 +14,13 @@ SITE
     yum (2.2.0)
 
 GIT
+  remote: git://github.com/ctrabold/chef-redis.git
+  ref: master
+  sha: e3a89f34d0f5b81867ae9e07a9404ac89e1ff61c
+  specs:
+    redis (0.0.4)
+
+GIT
   remote: git://github.com/fnichol/chef-rvm.git
   ref: master
   sha: 7038fb8c518d0d7785767de215b1ae463f237973
@@ -42,5 +49,6 @@ DEPENDENCIES
   git (>= 0)
   mysql (>= 0)
   postgresql (>= 0)
+  redis (>= 0)
   rvm (>= 0)
 
