@@ -7,6 +7,7 @@ Alliance website for Eve Online
 * Ruby 2.0.0
 * Ruby On Rails 4.0.0
 * A database engine, MySQL, PgSQL or SQLite3
+* Redis
 
 ## Dev Environment
 You can use vagrant which configs are inside this project.
@@ -23,10 +24,12 @@ When you are done, exit the VM and run the following command to suspend it until
 ## Install Reveally
 Installing Reveally is trivial, provided you follow the following steps:
 
-    $ bundle install
-    $ rake db:migrate
-    $ rake db:seed
-    $ rails s
+* Install gems: `$ bundle install`
+* Migrate database: `$ bin/rake db:migrate`
+* Migrate corporations: `$ bin/rake corporation:update`
+* Add corporation API Keys via form.
+* Migrate mambers: `$ bin/rake corporation:update_members`
+* Run project: `$ rails s`
     
 You can now access Reveally to http://yourdomain:3000
 
